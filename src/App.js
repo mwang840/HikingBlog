@@ -1,24 +1,39 @@
-import logo from './logo.svg';
 import './App.css';
+import { ChakraProvider, extendTheme } from '@chakra-ui/react';
+import { Button, Heading, ButtonGroup} from '@chakra-ui/react';
+
+const theme = extendTheme({
+  colors: {
+    teal: {
+      50: '#E6FFFA',
+      // Add other teal color shades as needed
+    },
+  },
+  sizes: {
+    lg : "20px"
+  },
+});
 
 function App() {
   return (
+    <ChakraProvider theme={theme}>
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Heading as="h1" fontSize="70px">
+        Hiking Blog
+      </Heading>
+      <Heading as="h3" fontSize="35px">
+        A Blog to Post Hiking Pictures and to Write Reviews about each trail
+      </Heading>
+      <ButtonGroup spacing="8">
+        <Button size="lg" colorScheme="teal">
+          Register
+        </Button>
+        <Button size="lg" colorScheme="purple">
+          Log-In
+        </Button>
+      </ButtonGroup>
     </div>
+  </ChakraProvider>
   );
 }
 
