@@ -3,7 +3,7 @@ import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import { Button, Heading, ButtonGroup } from "@chakra-ui/react";
 import Register from "./components/pages/Register";
-
+import { registerWGoogle } from "./components/services/Firebase";
 const theme = extendTheme({
   colors: {
     teal: {
@@ -48,6 +48,7 @@ function App() {
               Log-In
             </Button>
           </ButtonGroup>
+          <button onClick={registerWGoogle}>Sign up/sign in with google</button>
           </div>
           )}
 
