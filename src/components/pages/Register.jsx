@@ -1,5 +1,5 @@
 import React, {useState} from  "react";
-import {FormControl, FormLabel, Input, FormErrorMessage, FormHelperText} from "@chakra-ui/react";
+import {FormControl, FormLabel, Input, FormErrorMessage, FormHelperText, Heading} from "@chakra-ui/react";
 import {Button} from "@chakra-ui/react";
 import {useNavigate} from "react-router-dom";
 
@@ -8,23 +8,24 @@ const Register = ({onBack})=>{
    const [email, setEmail] = useState("");
    const [userName, setUserName] = useState("");
    const [password, setPassword] = useState("");
-   const [emailError, setEmailError] = useState(false);
-  const [userNameError, setUserNameError] = useState(false);
-  const [passwordError, setPasswordError] = useState(false);
+   const emailError = email === '';
+   const userNameError = userName === '';
+   const passwordError = password === '';
    const navigate = useNavigate();
    const updateEmail = (e) => setEmail(e.target.value);
    const updateUserName = (e)=> setUserName(e.target.value);
    const updatePassword = (e) => setPassword(e.target.value);
-   const handleBack = () => {
-      onBack();
-   };
+  
 
    const goBack = ()=>{
-    navigate(-1)
+    navigate(-1);
    }
 
    return (
     <div>
+      <Heading as="h1" fontSize="70px">
+            Sign-up
+      </Heading>
       <FormControl isRequired>
          <FormLabel>Email</FormLabel>
          <Input type='email' value={email} onChange={updateEmail} />
