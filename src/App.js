@@ -47,8 +47,9 @@ function App() {
             <Button size="lg" colorScheme="purple">
               Log-In
             </Button>
+            <Button onClick={registerWGoogle} size="lg" colorScheme="red">Sign up/sign in with google</Button>
           </ButtonGroup>
-          <button onClick={registerWGoogle}>Sign up/sign in with google</button>
+          {/* <button onClick={registerWGoogle}>Sign up/sign in with google</button> */}
           </div>
           )}
 
