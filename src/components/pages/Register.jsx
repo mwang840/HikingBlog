@@ -2,6 +2,7 @@ import React, {useState} from  "react";
 import {FormControl, FormLabel, Input, FormErrorMessage, FormHelperText, Heading} from "@chakra-ui/react";
 import {Button} from "@chakra-ui/react";
 import {useNavigate} from "react-router-dom";
+import HikingBlogLayout from "./HikingBlogMain";
 
 const Register = ({onBack})=>{
 
@@ -12,6 +13,8 @@ const Register = ({onBack})=>{
    const userNameError = userName === '';
    const passwordError = password === '';
    const navigate = useNavigate();
+   const [isPage, setPageVisible] = useState(true);
+   const [registerVisible, setRegisterVisible] = useState(false);
    const updateEmail = (e) => setEmail(e.target.value);
    const updateUserName = (e)=> setUserName(e.target.value);
    const updatePassword = (e) => setPassword(e.target.value);
@@ -21,9 +24,17 @@ const Register = ({onBack})=>{
     navigate(-1);
    }
 
+   const showPage = () =>{
+    setPageVisible(true);
+    setRegisterVisible(false);
+   }
+
+
    return (
     <div>
-      <Heading as="h1" fontSize="70px">
+      {registerVisible && (
+        <div>
+          <Heading as="h1" fontSize="70px">
             Sign-up
       </Heading>
       <FormControl isRequired>
@@ -60,6 +71,10 @@ const Register = ({onBack})=>{
       </FormControl>
       <Button onClick={goBack}>Back</Button>
       <Button>Register</Button>
+        </div>
+      )}
+      
+      {isPage && <HikingBlogLayout />}
     </div>
    );
 };
