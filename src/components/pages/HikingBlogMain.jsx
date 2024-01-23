@@ -1,7 +1,9 @@
 import React from "react";
 import { Axios } from "axios";
 import { NPSAPI_Key } from "../parks_key";
-import Avatar from "@mui/material/Avatar";
+import {Heading, Center, Avatar, InputRightElement, InputGroup, Input} from "@chakra-ui/react"
+
+
 
 const apiUrl = 'https://developer.nps.gov/api/v1/parks';
 
@@ -12,7 +14,14 @@ const apiUrl = 'https://developer.nps.gov/api/v1/parks';
 
 const HikingBlogLayout = () =>{
     return <div>
-        <Avatar></Avatar>
+        <Center><Heading>Hiking Blog</Heading></Center>
+        <InputGroup size="sm">
+        <Input placeholder="Search"></Input>
+        <InputRightElement>
+        <Avatar src="../images/blank-pfp.png"/>
+        </InputRightElement>
+        </InputGroup>
+        
     </div>
 }
 
