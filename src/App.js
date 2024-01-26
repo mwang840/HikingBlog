@@ -3,6 +3,7 @@ import { ChakraProvider, extendTheme } from "@chakra-ui/react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import { Button, Heading, ButtonGroup } from "@chakra-ui/react";
 import Register from "./components/pages/Register";
+import Login from "./components/pages/Login";
 
 const theme = extendTheme({
   colors: {
@@ -20,11 +21,16 @@ function App() {
 
   const [isHomeVisible, setHomeVisible] = useState(true);
   const [registerVisible, setRegisterVisible] = useState(false);
-
+  const [loginVisible, setLoginVisible] = useState(false);
   const showRegister = () => {
     setHomeVisible(false);
     setRegisterVisible(true);
   };
+
+  const showLogin = () =>{
+    setHomeVisible(false);
+    setLoginVisible(true);
+  }
 
   return (
     <ChakraProvider theme={theme}>
@@ -44,14 +50,17 @@ function App() {
                 Register
               </Button>
             </Link>
-            <Button size="lg" colorScheme="purple">
+            <Link to="/login">
+            <Button size="lg" colorScheme="purple" onClick={showLogin}>
               Log-In
             </Button>
+            </Link>
           </ButtonGroup>
           </div>
           )}
 
         {registerVisible && <Register />}
+        {loginVisible && <Login/>}
         </div>
       </Router>
     </ChakraProvider>
