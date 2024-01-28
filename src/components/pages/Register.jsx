@@ -1,5 +1,5 @@
 import React, {useState} from  "react";
-import {FormControl, FormLabel, Input, FormErrorMessage, FormHelperText, Heading} from "@chakra-ui/react";
+import {FormControl, FormLabel, Input, FormErrorMessage, FormHelperText, Heading, InputRightElement, InputGroup} from "@chakra-ui/react";
 import {Button} from "@chakra-ui/react";
 import {redirect} from "react-router-dom";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
@@ -14,13 +14,13 @@ const Register = ({onBack})=>{
    const [emailError, setEmailError] = useState(false);
    const [userNameError, setUserNameError] = useState(false);
    const [passwordError, setPasswordError] = useState(false);
-   
+   const [show, setShow] = useState(false);
    const [hikingMainPage, setHikingMainPage] = useState(false);
    const [registerVisible, setRegisterVisible] = useState(true);
    const updateEmail = (e) => setEmail(e.target.value);
    const updateUserName = (e)=> setUserName(e.target.value);
    const updatePassword = (e) => setPassword(e.target.value);
-  
+   const handleClick = () => setShow(!show)
 
 
    const showBlogPage = () =>{
@@ -87,11 +87,19 @@ const Register = ({onBack})=>{
         <FormErrorMessage>UserName is required.</FormErrorMessage>
       )}
          <FormLabel>Password</FormLabel>
-         <Input type='password' value={password} onChange={updatePassword} />
+         <InputGroup size='md'>
+         <Input type={show ? 'text' : 'password'} value={password} onChange={updatePassword} />
+         <InputRightElement width='4.5rem'>
+        <Button h='1.75rem' size='sm' onClick={handleClick}>
+          {show ? 'Hide' : 'Show'}
+        </Button>
+      </InputRightElement>
+      </InputGroup>
          {!passwordError ? (
         <FormHelperText>
           Enter your password.
         </FormHelperText>
+
       ) : (
         <FormErrorMessage>Password is required. Its recommended for it to be at least 8 characters, with one special character and one uppercase and lowercase character</FormErrorMessage>
       )}

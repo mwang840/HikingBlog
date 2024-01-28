@@ -51,7 +51,7 @@ const Login = ({onBack})=>{
             Sign-in
     </Heading>
     <FormControl isRequired>
-    <FormLabel>User Name</FormLabel>
+    <FormLabel>Email</FormLabel>
          <Input type='userName' value={email} onChange={updateEmail} />
          {!emailError ? (
         <FormHelperText>
