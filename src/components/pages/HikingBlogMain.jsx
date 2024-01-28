@@ -7,21 +7,22 @@ import {Heading, Center, Avatar, InputRightElement, InputGroup, Input} from "@ch
 
 const apiUrl = 'https://developer.nps.gov/api/v1/parks';
 
-// Axios.get(apiUrl, NPSAPI_Key).then(function(res){
-//     console.log("Got the hiking data", res)
-// })
 
 
 const HikingBlogLayout = () =>{
     return <div>
         <Center><Heading>Hiking Blog</Heading></Center>
-        <InputGroup size="sm">
-        <Input placeholder="Search"></Input>
+        <Center><Heading as='h2' size='md' noOfLines={1}>
+        Welcome to the Hiking Blog Where on this webpage, you can search for any parks and then write reviews for each trail.
+        </Heading></Center>
+        <InputGroup size="lg">
+        <Center><Input placeholder="Search" width="auto" htmlSize={100}></Input></Center>
+        
         <InputRightElement>
         <Avatar src="../images/blank-pfp.png"/>
         </InputRightElement>
         </InputGroup>
-        
+        <Center><Heading as ="p" size="sm">Browse for a Park by Category</Heading></Center>
     </div>
 }
 
