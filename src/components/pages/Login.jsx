@@ -1,9 +1,10 @@
 import React, {useState} from "react";
-import {FormControl, FormLabel, Input, FormErrorMessage, FormHelperText, Heading} from "@chakra-ui/react";
+import {FormControl, FormLabel, Input, FormErrorMessage, FormHelperText, Heading, InputRightElement, InputGroup} from "@chakra-ui/react";
 import {Button} from "@chakra-ui/react";
 import {useNavigate} from "react-router-dom";
 import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
 import HikingBlogLayout from "./HikingBlogMain";
+import { registerWGoogle } from "../services/Firebase";
 
 const Login = ({onBack})=>{
   const [email, setEmail] = useState("");
@@ -13,9 +14,12 @@ const Login = ({onBack})=>{
    const navigate = useNavigate();
    const [hikingMainPage, setHikingMainPage] = useState(false);
    const [loginVisible, setLoginVisible] = useState(true);
-
+   const [show, setShow] = useState(false);
    const updateEmail = (e) => setEmail(e.target.value);
    const updatePassword = (e) => setPassword(e.target.value);
+   const handleClick = () => setShow(!show)
+
+
    const goBack = ()=>{
     navigate(-1);
    }
@@ -25,6 +29,7 @@ const Login = ({onBack})=>{
     setLoginVisible(false);
    }
 
+   
 
 
    const handleLogin = async (event) => {
@@ -43,6 +48,13 @@ const Login = ({onBack})=>{
         });
       }
   };
+
+  const handleRegisterWithGoogle = async(event) =>{
+    event.preventDefault();
+    await registerWGoogle();
+    showBlogPage();
+  }
+
   
 
    return (<div>
@@ -61,7 +73,14 @@ const Login = ({onBack})=>{
         <FormErrorMessage>Email is required.</FormErrorMessage>
       )}
          <FormLabel>Password</FormLabel>
-         <Input type='password' value={password} onChange={updatePassword} />
+         <InputGroup size='md'>
+         <Input type={show ? 'text' : 'password'} value={password} onChange={updatePassword} />
+         <InputRightElement width='4.5rem'>
+        <Button h='1.75rem' size='sm' onClick={handleClick}>
+          {show ? 'Hide' : 'Show'}
+        </Button>
+      </InputRightElement>
+      </InputGroup>
          {!passwordError ? (
         <FormHelperText>
           Enter your password.
@@ -71,7 +90,8 @@ const Login = ({onBack})=>{
       )}
     </FormControl>
     <Button onClick={goBack} size="lg" colorScheme="blue">Back</Button>
-      <Button onClick={handleLogin} size="lg" colorScheme="green">Login</Button>
+    <Button onClick={handleLogin} size="lg" colorScheme="green">Login</Button>
+    <Button onClick={handleRegisterWithGoogle} size="lg" colorScheme="red">Sign up/sign in with google</Button>
     </div>)}
     {hikingMainPage && <HikingBlogLayout />}
    </div>)
