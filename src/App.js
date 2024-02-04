@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import { ChakraProvider, extendTheme, Center, Stack } from "@chakra-ui/react";
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import { Button, Heading, ButtonGroup } from "@chakra-ui/react";
 import Register from "./components/pages/Register";
@@ -38,13 +38,14 @@ function App() {
         <div className="App">
           {isHomeVisible && (
             <div>
-            <Heading as="h1" fontSize="70px">
+            <Center><Heading as="h1" fontSize="70px">
             Hiking Blog
-          </Heading>
-          <Heading as="h3" fontSize="35px">
+          </Heading></Center>
+          <Center><Heading as="h3" fontSize="35px">
             A Blog to Post Hiking Pictures and to Write Reviews about each trail
-          </Heading>
+          </Heading></Center>
           <ButtonGroup spacing="8">
+            <Stack align='center' direction='row'>
             <Link to="/register">
               <Button size="lg" colorScheme="teal" onClick={showRegister}>
                 Register
@@ -55,6 +56,7 @@ function App() {
               Log-In
             </Button>
             </Link>
+            </Stack>
           </ButtonGroup>
           </div>
           )}
