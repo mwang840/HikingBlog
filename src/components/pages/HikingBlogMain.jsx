@@ -12,7 +12,7 @@ const apiUrl = 'https://developer.nps.gov/api/v1/parks';
 
 const HikingBlogLayout = () =>{
     const [searchQuery, setSearchQuery] = useState("");
-    const [parkData, setParkData] = useState(null);
+    const [parkData, setParkData] = useState([]);
 
     const getParks = async () => {
         try {
@@ -22,8 +22,8 @@ const HikingBlogLayout = () =>{
               api_key: NPSAPI_Key, // assuming NPSAPI_Key is your API key
             },
           });
-          setParkData(response.data);
-          console.log(response.data);
+          setParkData(response.data.data);
+          console.log(response.data.data.fullName);
         } catch (error) {
           console.error(error);
         }
@@ -49,11 +49,14 @@ const HikingBlogLayout = () =>{
         </InputGroup>
         <Center><Heading as ="p" size="sm">Browse for a Park by Category</Heading></Center>
         
-        {/* Display the park data on a separate page */}
-      {parkData && (
+       {parkData.length > 0 && (
         <div>
-          <Center><Heading>{`${parkData}`}</Heading></Center>
-          {/* Display other relevant park data */}
+          {parkData.map((park, index) => (
+            <div key={index}>
+              <Heading>{park.fullName}</Heading>
+              {/* Display other relevant park data */}
+            </div>
+          ))}
         </div>
       )}
     </div>
