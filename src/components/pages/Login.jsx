@@ -38,7 +38,7 @@ const Login = ({onBack})=>{
     setEmailError(email === "");
     setPasswordError(password === '');
     if (!emailError && !passwordError) {
-        await signInWithEmailAndPassword(auth, email, password)
+        await signInWithEmailAndPassword(auth, email.trim(), password.trim())
         .then((userCredential) => {
           console.log(userCredential);
           showBlogPage();
