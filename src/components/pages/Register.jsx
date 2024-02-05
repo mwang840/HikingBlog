@@ -39,7 +39,7 @@ const Register = ({onBack})=>{
     setUserNameError(userName === '');
     setPasswordError(password === ''); 
     if(!emailError && !userNameError && !passwordError){
-    await createUserWithEmailAndPassword(auth, email, password)
+    await createUserWithEmailAndPassword(auth, email.trim(), password.trim())
     .then((userCredentials) => {
       console.log(userCredentials);
       showBlogPage();
