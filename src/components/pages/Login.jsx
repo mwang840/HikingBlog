@@ -7,7 +7,7 @@ import HikingBlogLayout from "./HikingBlogMain";
 import { registerWGoogle } from "../services/Firebase";
 
 const Login = ({onBack})=>{
-  const [email, setEmail] = useState("");
+   const [email, setEmail] = useState("");
    const [password, setPassword] = useState("");
    const [emailError, setEmailError] = useState(false);
    const [passwordError, setPasswordError] = useState(false);
