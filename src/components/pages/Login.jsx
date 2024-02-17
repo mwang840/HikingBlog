@@ -36,7 +36,7 @@ const Login = ({onBack})=>{
     event.preventDefault();
     const auth = getAuth();
     setEmailError(email === "");
-    setPasswordError(password === '');
+    setPasswordError(password === "");
     if (!emailError && !passwordError) {
         await signInWithEmailAndPassword(auth, email.trim(), password.trim())
         .then((userCredential) => {
@@ -51,8 +51,8 @@ const Login = ({onBack})=>{
 
   const handleRegisterWithGoogle = async(event) =>{
     event.preventDefault();
-    await registerWGoogle();
-    showBlogPage();
+    const response = await registerWGoogle();
+    
   }
 
   
