@@ -41,13 +41,13 @@ const HikingBlogLayout = () =>{
         Welcome to the Hiking Blog Where on this webpage, you can search for any parks and then write reviews for each trail.
         </Heading></Center>
         <InputGroup size="lg">
-         <FormControl true>
+        
         <FormLabel>Search for a Park</FormLabel>
         <Center><Input placeholder="Search" width="auto" htmlSize={100} value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)}></Input></Center>
         <Button colorScheme='teal' size='sm' rightIcon={<SearchIcon/>} onClick={handleSearch}>
         Search
         </Button>
-        </FormControl> 
+       
         <InputRightElement>
         <Avatar src="../images/blank-pfp.png"/>
         </InputRightElement>
